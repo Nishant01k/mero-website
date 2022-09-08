@@ -23,6 +23,12 @@ body {
     background-color: #F5F5F5;
 }
 
+.add-button {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+
 .heading-page
 {
       text-transform: uppercase;
