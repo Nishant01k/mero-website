@@ -100,9 +100,7 @@ var firebaseConfig = {
       database_ref.child('Web Users/' + user.uid).update(user_data)
   
       // DOne
-      alert('User Logged In!!')
-
-    
+      alert('User Logged In!!!')
   
     })
     .catch(function(error) {
