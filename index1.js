@@ -1,13 +1,13 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyDXquClZ-bfG9mKepTsIcg3bPHSqHkGx6E",
-    authDomain: "mero-book-48658.firebaseapp.com",
-    databaseURL: "https://mero-book-48658-default-rtdb.firebaseio.com",
-    projectId: "mero-book-48658",
-    storageBucket: "mero-book-48658.appspot.com",
-    messagingSenderId: "717738671416",
-    appId: "1:717738671416:web:ef6c5c664018113a8795cd",
-    measurementId: "G-NKWJ49MQ6B"
+  apiKey: "AIzaSyDXquClZ-bfG9mKepTsIcg3bPHSqHkGx6E",
+  authDomain: "mero-book-48658.firebaseapp.com",
+  databaseURL: "https://mero-book-48658-default-rtdb.firebaseio.com",
+  projectId: "mero-book-48658",
+  storageBucket: "mero-book-48658.appspot.com",
+  messagingSenderId: "717738671416",
+  appId: "1:717738671416:web:ef6c5c664018113a8795cd",
+  measurementId: "G-NKWJ49MQ6B"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
