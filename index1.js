@@ -91,11 +91,16 @@ var firebaseConfig = {
   
       // Create User data
       var user_data = {
+        email : email,
+        full_name : full_name,
         last_login : Date.now()
+        
       }
+
+      
   
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).update(user_data)
+      database_ref.child('Web Users/' + user.uid).update(user_data)
   
       // DOne
       alert('User Logged In!!')
