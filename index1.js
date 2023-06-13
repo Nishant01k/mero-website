@@ -73,6 +73,7 @@ var firebaseConfig = {
     // Get all our input fields
     email = document.getElementById('email').value
     password = document.getElementById('password').value
+    full_name = document.getElementById('full_name').value
   
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
@@ -96,23 +97,23 @@ var firebaseConfig = {
         last_login : Date.now()
         
       }
-
-      
-  
       // Push to Firebase Database
       database_ref.child('Web Users/' + user.uid).update(user_data)
   
-      // DOne
-      alert('User Logged In!!')
+
   
     })
+          // DOne
+          alert('User Logged In!!')
+          
     .catch(function(error) {
       // Firebase will use this to alert of its errors
       var error_code = error.code
       var error_message = error.message
-  
       alert(error_message)
     })
+
+   
   }
   
   
