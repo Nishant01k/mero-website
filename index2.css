@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-logo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.nav-items ul {
+    list-style-type: none;
+}
+
+.nav-items ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-items ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Content styles */
+.content {
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+}

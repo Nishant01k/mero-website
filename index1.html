@@ -103,7 +103,10 @@
         }
 
         function nextPage() {
-            window.location.href = "index2.html";
+            
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+            window.location.href = "index2.html?uid=" + uid;
         }
     </script>
 </body>

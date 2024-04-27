@@ -1,24 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Login</title>
-         <!-- Cool Google Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
-        <!-- Our stylesheet -->
-        <link rel="stylesheet" type="text/css" href="index.css">
-    </head>
-    <body>
-        <div id="content_container">
-            <div id="form_container">
-                <div id="form_header_container">
-                    <h2 id="form_header"> Mero book Login </h2>
-                </div>
+<head>
+    <meta charset="utf-8">
+    <title>Next Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Cool Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index2.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>My Website</h1>
+            </div>
+            <div class="nav-items">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-user">
+                <p id="username"></p>
             </div>
         </div>
-    </body>
-    </html>
+    </nav>
+
+    <div class="content">
+        <h2>Welcome to the Next Page</h2>
+        <p>This is the content of the next page.</p>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDXquClZ-bfG9mKepTsIcg3bPHSqHkGx6E",
+            authDomain: "mero-book-48658.firebaseapp.com",
+            databaseURL: "https://mero-book-48658-default-rtdb.firebaseio.com",
+            projectId: "mero-book-48658",
+            storageBucket: "mero-book-48658.appspot.com",
+            messagingSenderId: "717738671416",
+            appId: "1:717738671416:web:ef6c5c664018113a8795cd",
+            measurementId: "G-NKWJ49MQ6B"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Retrieve UID from URL query parameter
+        var uid = getParameterByName('uid');
+
+        // Use UID to fetch user-specific information from the database
+        var userRef = firebase.database().ref('Users/' + uid + '/name');
+        userRef.once('value', function(snapshot) {
+            var username = snapshot.val();
+            document.getElementById('username').textContent = username;
+        });
+
+        // Function to get URL query parameters
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+    </script>
+</body>
+</html>
