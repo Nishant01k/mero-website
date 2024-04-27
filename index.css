@@ -1,136 +1,91 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF);
-
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(63, 94, 251, 0.8), rgba(252, 70, 107, 0.8)); /* Gradient background for glass effect */
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: none;
-    outline: none;
-}
-#content_container {
-    width: 30%;
-    height: 70%;
+    height: 100vh; /* Full viewport height */
 }
 
 #form_container {
-    width: 100%;
-    height: 100%;
-
-    background-color: #370617;
-    box-shadow: 0 0 50px -20px #000;
-    border-radius: 2%;
-
-    overflow: hidden;
-}
-
-#form_header_container {
-    width: 100%;
-    height: 5%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: left;
-
+    background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
     padding: 20px;
-    padding-bottom: 30px;
-    padding-top: 30px;
-
-    border-bottom: 1px solid transparent;
-    border-image: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF) 20;
-    background: #000;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
 }
 
 #form_header {
-    display: inline-block;
-    font-size: 15px;
-    font-family: Bowlby One SC;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-
-    background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-}
-
-#form_content_container {
-    width: 100%;
-    height: 90%;
-
-    float: left;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-top: 30px;
-}
-
-#form_content_inner_container {
-    width: 75%;
-    height: 100%;
-
-    float: left;
-
-}
-
-input {
-    width: 100%;
-    height: 40px;
-
-    padding-left: 10px;
+    text-align: center;
     margin-bottom: 20px;
-
-    background: #000;
-    font-family: Montserrat;
-    font-weight: 500;
-    color: #fff;
-    font-size: 12px;
-
-    border-bottom: 2px solid transparent;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
-    border-image: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF) 1;
 }
 
-#button_container {
-    width: 100%;
-    height: 10%;
-
-    background-image: linear-gradient(80deg, #FFBE0B, #FB5607 50%, #FF006E 50%, #8338EC);
-    color: #fff;
-
-    float: left;
-
-    margin-top: 5px;
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    width: calc(100% - 22px); /* Adjusting width to accommodate borders */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4); /* White border with transparency */
+    border-radius: 6px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    background-color: rgba(255, 255, 255, 0.2); /* White background with transparency */
 }
 
-#button_container button {
-    width: 50%;
-    height: 100%;
-    float: left;
-
-    background: transparent;
-    color: inherit;
-
-    font-family: Montserrat;
-    letter-spacing: 1px;
-    font-weight: 900;
-    font-size: 12px;
-
+button {
+    background-color: rgba(14, 181, 78, 0.499); /* White button color with transparency */
+    color: #000000; /* White text color */
     cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+button:hover {
+    background-color: rgba(255, 255, 255, 0.6); /* Lighter white on hover */
+}
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Center horizontally */
+    margin-top: 10%; /* Center vertically */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Close Button Styling */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Center the button */
+#button_container {
+    text-align: center;
 }

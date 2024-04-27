@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Login</title>
          <!-- Cool Google Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -21,19 +21,29 @@
 
                 <div id="form_content_container">
                     <div id="form_content_inner_container">
-                        <input type="text" id="full_name" placeholder="Full name">
                         <input type="email" id="email" placeholder="Email">
-                        <input type="password" id="password" placeholder="New Password">
+                        <input type="password" id="password" placeholder="Password">
 
                         <div id="button_container">
+                            <center>
                             <button onclick="login()">Login</button>
+                            </center>
+                            <p id="error_message" style="color: red; display: none;">Email or password doesn't match with database.</p>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+        <!-- Modal HTML -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Login successful!</p>
+            <button onclick="nextPage()">Okey</button>
+        </div>
+    </div>
+    
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
 
@@ -42,7 +52,59 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
-    <!-- Our script must be loaded after firebase references -->
-    <script src="index1.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDXquClZ-bfG9mKepTsIcg3bPHSqHkGx6E",
+            authDomain: "mero-book-48658.firebaseapp.com",
+            databaseURL: "https://mero-book-48658-default-rtdb.firebaseio.com",
+            projectId: "mero-book-48658",
+            storageBucket: "mero-book-48658.appspot.com",
+            messagingSenderId: "717738671416",
+            appId: "1:717738671416:web:ef6c5c664018113a8795cd",
+            measurementId: "G-NKWJ49MQ6B"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // Initialize variables
+        const auth = firebase.auth();
 
+        function login() {
+            event.preventDefault(); // Prevent form submission
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var errorMessageElement = document.getElementById('error_message');
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(function() {
+                   // Show success modal
+                   var modal = document.getElementById('successModal');
+                    modal.style.display = 'block';
+                })
+                .catch(function(error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
+                        // Show error message for invalid email or password
+                        errorMessageElement.style.display = 'block';
+                    } else {
+                        // Show general error message
+                        alert(errorMessage);
+                    }
+
+                });
+                
+        }
+        
+        function closeModal() {
+            var modal = document.getElementById('successModal');
+            modal.style.display = 'none';
+        }
+
+        function nextPage() {
+            window.location.href = "index2.html";
+        }
+    </script>
+</body>
 </html>
