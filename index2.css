@@ -4,14 +4,18 @@
     box-sizing: border-box;
 }
 
-/* Navigation bar styles */
 nav {
-    background-color: #333;
+    background: linear-gradient(135deg, rgba(63, 94, 251, 0.8), rgba(252, 70, 107, 0.8)); /* Gradient background */
     color: #fff;
     padding: 10px 0;
+    position: relative;
+    border-radius: 50px;
+    background-color: rgba(25, 43, 89, .7); /* Dark blue background with transparency */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,28 +23,120 @@ nav {
 }
 
 .nav-logo h1 {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 900;
 }
 
-.nav-items ul {
-    list-style-type: none;
-}
-
-.nav-items ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.nav-items ul li a {
-    text-decoration: none;
+.nav-items {
     color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
-/* Content styles */
-.content {
-    padding: 20px;
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 20px;
+.nav-user {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.nav-coin {
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nav-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+
+
+
+.card-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    border-radius: 10px; 
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    margin: 0 auto; /* Center horizontally */
+    background: rgba(255, 255, 255, 0.9); /* White background with transparency for glass effect */
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+} 
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px; /* Rounded corners */
+}
+
+.card-back {
+    background-color: #f8f8f8;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align the text to the bottom */
+    border-radius: 20px; /* Rounded corners */
+    position: relative; /* Position the text relative to the card */
+}
+
+.card-back h2 {
+    color: #333;
+    text-align: center;
+    margin: 0; /* Remove default margin */
+    position: absolute; /* Position the element */
+    bottom: 10px; /* Adjust vertical position as needed */
+    left: 50%; /* Move it to the center horizontally */
+    transform: translateX(-50%); /* Adjust for center alignment */
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin: auto 0 0; /* Margin to push the element to the top */
+    position: absolute; /* Position the element */
+    bottom: 0; /* Align to the bottom */
+    left: 50%; /* Move it to the center horizontally */
+    transform: translateX(-50%); /* Adjust for center alignment */
+    font-family: monospace;
+    font-size: 40px;
+    text-align: center;
+}
+
+
+.card-front img {
+    max-width: 100%; /* Ensure the image does not exceed the container's width */
+    max-height: 100%; /* Ensure the image does not exceed the container's height */
+    border-radius: 20px; /* Apply the same border-radius as the card */
 }

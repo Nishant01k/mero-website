@@ -14,25 +14,37 @@
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
-                <h1>My Website</h1>
+                <center>
+                <h1>Mero Book</h1>
+            </center>
             </div>
             <div class="nav-items">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+                <div class="nav-items-container">
+                <img src="pngwing.com.png" alt="Image" class="nav-image"
+            </div>
             </div>
             <div class="nav-user">
                 <p id="username"></p>
             </div>
+        <div class="nav-coin"> 
+            <div class="nav-coin-content">
+            <p id="coins"></p>
+            </div>
         </div>
+    </div>
     </nav>
+    
 
-    <div class="content">
-        <h2>Welcome to the Next Page</h2>
-        <p>This is the content of the next page.</p>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-front">
+                <img src="book_generated.png" alt="Front Image">
+                <h2>Books</h2>
+            </div>
+            <div class="card-back">
+                <h2>The more that you read, the more things you will know. The more that you learn, the more places you'll go." - Dr. Seuss</h2>
+            </div>
+        </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -58,11 +70,19 @@
         var uid = getParameterByName('uid');
 
         // Use UID to fetch user-specific information from the database
-        var userRef = firebase.database().ref('Users/' + uid + '/name');
+        var userRef = firebase.database().ref('Users/' + uid + '/email');
         userRef.once('value', function(snapshot) {
             var username = snapshot.val();
             document.getElementById('username').textContent = username;
         });
+
+        var userRef = firebase.database().ref('Users/' + uid + '/coins');
+        userRef.once('value', function(snapshot) {
+            var coins = snapshot.val(); // Retrieve the number of coins
+            document.getElementById('coins').textContent = coins; // Display the number of coins
+        });
+
+
 
         // Function to get URL query parameters
         function getParameterByName(name) {
