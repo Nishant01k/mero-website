@@ -1,13 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 nav {
     background: linear-gradient(135deg, rgba(63, 94, 251, 0.8), rgba(252, 70, 107, 0.8)); /* Gradient background */
     color: #fff;
-    padding: 10px 0;
     position: relative;
     border-radius: 50px;
     background-color: rgba(25, 43, 89, .7); /* Dark blue background with transparency */
@@ -111,14 +106,15 @@ nav {
     position: relative; /* Position the text relative to the card */
 }
 
-.card-back h2 {
+.card-back h3 {
     color: #333;
     text-align: center;
     margin: 0; /* Remove default margin */
     position: absolute; /* Position the element */
-    bottom: 10px; /* Adjust vertical position as needed */
+    bottom: 30px; /* Adjust vertical position as needed */
     left: 50%; /* Move it to the center horizontally */
-    transform: translateX(-50%); /* Adjust for center alignment */
+    transform: translateX(-50%);
+    text-align: center; /* Adjust for center alignment */
 }
 
 h2 {

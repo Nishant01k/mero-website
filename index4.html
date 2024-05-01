@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category List</title>
+<link rel="stylesheet" href="index3.css">
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <p>CATEGORY</p>
+            </div>
+        </div>
+    </div>
+</div>
+<img src="back.png" alt="Back" class="nav-back-button" onclick="goBack()">
+</div>
+    </nav>
+
+    
+
+    <div id="category-list">
+        <!-- Categories will be dynamically added here -->
+    </div>
+
+    <div id="loading-screen">
+        <div class="loader">
+
+            
+        </div>
+    </div>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script>
+    // Initialize Firebase
+var firebaseConfig = {
+            apiKey: "AIzaSyDXquClZ-bfG9mKepTsIcg3bPHSqHkGx6E",
+            authDomain: "mero-book-48658.firebaseapp.com",
+            databaseURL: "https://mero-book-48658-default-rtdb.firebaseio.com",
+            projectId: "mero-book-48658",
+            storageBucket: "mero-book-48658.appspot.com",
+            messagingSenderId: "717738671416",
+            appId: "1:717738671416:web:ef6c5c664018113a8795cd",
+            measurementId: "G-NKWJ49MQ6B"
+};
+firebase.initializeApp(firebaseConfig);
+
+// Reference to the categories node
+var categoriesRef = firebase.database().ref('Categories');
+
+function fetchCategories() {
+    var categoryList = document.getElementById('category-list');
+    categoriesRef.once('value', function(snapshot) {
+        // Remove the loading screen
+        document.getElementById('loading-screen').style.display = 'none';
+        
+        snapshot.forEach(function(childSnapshot) {
+            var categoryData = childSnapshot.val();
+            var categoryName = categoryData.category;
+
+            // Create a div for each category
+            var categoryDiv = document.createElement('div');
+            categoryDiv.classList.add('category');
+            categoryDiv.textContent = categoryName;
+            categoryList.appendChild(categoryDiv);
+
+            // Add click event listener to category
+            categoryDiv.addEventListener('click', function() {
+                // Do something when category is clicked
+                window.location.href = 'index3.html?category=' + encodeURIComponent(categoryName);
+            });
+        });
+    });
+}
+
+// Fetch categories when the page loads
+window.onload = fetchCategories;
+
+function goBack() {
+        window.history.back();
+    }
+
+</script>
+</body>
+</html>

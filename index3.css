@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    perspective: 1000px; /* Perspective for 3D effect */
+    background-color: #f0f0f0;
+}
+
+nav {
+    background: linear-gradient(135deg, rgba(63, 94, 251, 0.8), rgba(252, 70, 107, 0.8)); /* Gradient background */
+    color: #fff;
+    position: relative;
+    border-radius: 50px;
+    background-color: rgba(25, 43, 89, .7); /* Dark blue background with transparency */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+.nav-logo {
+    font-weight: 900;
+}
+
+
+.nav-back-button {
+    width: 30px; /* Adjust width as needed */
+    height: 30px; /* Maintain aspect ratio */
+    cursor: pointer;
+    margin-top: -60px;
+    left: 20px;
+}
+
+.nav-back-button:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+}
+
+
+#loading-screen {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+}
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #00fdad;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-screen p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.category {
+    border-radius: 20px; /* Rounded corners */
+    background-color: #c2e2d3; /* Light gray background */
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 15px; /* Spacing between categories */
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    transition: all .3s ease-in-out; /* Smooth animation when hovering over a category */
+
+}
+
+.category-name {
+    font-weight: 900;
+}
+
+.category-description {
+    color: #666;
+}
+
+
