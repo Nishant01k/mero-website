@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Next Page</title>
+    <title>Loading...</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Cool Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -70,6 +70,7 @@
 
         // Retrieve UID from URL query parameter
         var uid = getParameterByName('uid');
+        var database = firebase.database();
 
         // Use UID to fetch user-specific information from the database
         var userRef = firebase.database().ref('Users/' + uid + '/email');
@@ -83,6 +84,17 @@
             var coins = snapshot.val(); // Retrieve the number of coins
             document.getElementById('coins').textContent = coins; // Display the number of coins
         });
+
+        var userRef = database.ref('Users/' + uid); // Replace 'userId' with the actual user ID
+
+    // Fetch the user's data from Firebase and set it as the title of the page
+    userRef.once('value', function(snapshot) {
+        var userData = snapshot.val();
+        var userName = userData.name; // Assuming the user's name is stored in a field named 'name'
+
+        // Set the user's name as the title of the page
+        document.title = "Welcome, " + userName + "!";
+    });
 
 
 
