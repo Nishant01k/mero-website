@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
         <!-- Our stylesheet -->
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="Login.css">
     </head>
     <body>
         <div id="content_container">
@@ -107,7 +107,7 @@
             
             var user = firebase.auth().currentUser;
             var uid = user.uid;
-            window.location.href = "index2.html?uid=" + uid;
+            window.location.href = "Dashboard.html?uid=" + uid;
         }
     </script>
 </body>
