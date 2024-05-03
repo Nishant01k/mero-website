@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading...</title>
+<!-- Add your Firebase configuration script here -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script>
+    // Initialize Firebase
+    var firebaseConfig = {
+            apiKey: "AIzaSyDXquClZ-bfG9mKepTsIcg3bPHSqHkGx6E",
+            authDomain: "mero-book-48658.firebaseapp.com",
+            databaseURL: "https://mero-book-48658-default-rtdb.firebaseio.com",
+            projectId: "mero-book-48658",
+            storageBucket: "mero-book-48658.appspot.com",
+            messagingSenderId: "717738671416",
+            appId: "1:717738671416:web:ef6c5c664018113a8795cd",
+            measurementId: "G-NKWJ49MQ6B"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Reference to the database
+    var database = firebase.database();
+
+    // Function to fetch category details based on category ID
+    function fetchCategory(categoryId) {
+        var categoryRef = database.ref('Categories').child(categoryId);
+        categoryRef.once('value', function(snapshot) {
+            var categoryData = snapshot.val();
+            var categoryName = categoryData.name; // Assuming category name is stored in 'name' field
+
+            // Display the category name
+            document.getElementById('category-name').textContent = categoryName;
+
+            // Fetch books for the specified category
+            fetchBooksByCategory(categoryId);
+        });
+    }
+
+    // Function to fetch books based on category ID
+    function fetchBooksByCategory(categoryId) {
+        var booksList = document.getElementById('books-list');
+        var booksRef = database.ref('Books').orderByChild('category_id').equalTo(categoryId);
+        booksRef.once('value', function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var bookData = childSnapshot.val();
+                var bookTitle = bookData.title;
+                var bookAuthor = bookData.author;
+
+                // Create a div for each book
+                var bookDiv = document.createElement('div');
+                bookDiv.classList.add('book');
+                bookDiv.innerHTML = '<h2>' + bookTitle + '</h2><p>By: ' + bookAuthor + '</p>';
+                booksList.appendChild(bookDiv);
+            });
+        });
+    }
+
+    // Extract category ID from URL query parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var categoryId = urlParams.get('categoryId');
+
+    // Fetch category details and books for the specified category when the page loads
+    window.onload = function() {
+        fetchCategory(categoryId);
+    };
+</script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>Loading...</p>
+    </div>
+    <h1 id="category-name"></h1>
+    <div id="books-list">
+        <!-- Books will be dynamically added here -->
+    </div>
+</body>
+</html>

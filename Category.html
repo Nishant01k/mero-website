@@ -62,17 +62,19 @@ function fetchCategories() {
         snapshot.forEach(function(childSnapshot) {
             var categoryData = childSnapshot.val();
             var categoryName = categoryData.category;
+            var categoryId = childSnapshot.key;
 
             // Create a div for each category
             var categoryDiv = document.createElement('div');
             categoryDiv.classList.add('category');
             categoryDiv.textContent = categoryName;
+            categoryDiv.setAttribute('id', categoryId); // Set category ID as data attribute
             categoryList.appendChild(categoryDiv);
 
             // Add click event listener to category
             categoryDiv.addEventListener('click', function() {
                 // Do something when category is clicked
-                window.location.href = 'index3.html?category=' + encodeURIComponent(categoryName);
+                window.location.href = 'Book.html?category=' + encodeURIComponent(categoryId);
             });
         });
     });
