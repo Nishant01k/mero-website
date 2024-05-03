@@ -1,0 +1,6 @@
+title: Awesome Photography
+description: Explore stunning photographs from around the world.
+theme: minima
+
+# Remove the .html extension from URLs
+permalink: /:title/
