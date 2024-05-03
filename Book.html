@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loading...</title>
+<link rel="icon" type="image/x-icon" href="merooo.png" />
+<link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Cool Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Book.css">
+</head>
+
+<body>
+    <div id="loading-screen">
+        <div class="loader">
+        </div>
+    </div>
+    <h1 id="category-name"></h1>
+    <div id="books-list">
+        <!-- Books will be dynamically added here -->
+    </div>
 <!-- Add your Firebase configuration script here -->
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
@@ -29,25 +47,29 @@
         var categoryRef = database.ref('Categories').child(categoryId);
         categoryRef.once('value', function(snapshot) {
             var categoryData = snapshot.val();
-            var categoryName = categoryData.name; // Assuming category name is stored in 'name' field
+            var categoryName = categoryData.category; // Assuming category name is stored in 'name' field
 
             // Display the category name
             document.getElementById('category-name').textContent = categoryName;
 
             // Fetch books for the specified category
             fetchBooksByCategory(categoryId);
+
+            document.title = categoryName;
         });
     }
 
     // Function to fetch books based on category ID
     function fetchBooksByCategory(categoryId) {
         var booksList = document.getElementById('books-list');
-        var booksRef = database.ref('Books').orderByChild('category_id').equalTo(categoryId);
+        var booksRef = database.ref('Books').orderByChild('categoryId').equalTo(categoryId);
         booksRef.once('value', function(snapshot) {
+
+            document.getElementById('loading-screen').style.display = 'none';
             snapshot.forEach(function(childSnapshot) {
                 var bookData = childSnapshot.val();
                 var bookTitle = bookData.title;
-                var bookAuthor = bookData.author;
+                var bookAuthor = bookData.description;
 
                 // Create a div for each book
                 var bookDiv = document.createElement('div');
@@ -60,22 +82,14 @@
 
     // Extract category ID from URL query parameter
     var urlParams = new URLSearchParams(window.location.search);
-    var categoryId = urlParams.get('categoryId');
+    var categoryId = urlParams.get('category');
 
     // Fetch category details and books for the specified category when the page loads
     window.onload = function() {
         fetchCategory(categoryId);
     };
+
+
 </script>
-</head>
-<body>
-    <div id="loading-screen">
-        <div class="loader"></div>
-        <p>Loading...</p>
-    </div>
-    <h1 id="category-name"></h1>
-    <div id="books-list">
-        <!-- Books will be dynamically added here -->
-    </div>
 </body>
 </html>
